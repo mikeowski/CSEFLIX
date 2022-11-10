@@ -1,0 +1,3 @@
+C:/Users/Deniz/Desktop/CSEFLIX/cmake-build-debug/CMakeFiles/CSEFLIX.dir
+C:/Users/Deniz/Desktop/CSEFLIX/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Deniz/Desktop/CSEFLIX/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,13 @@
+"C:\Program Files (x86)\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files (x86)/CLion 2021.3.4/bin/ninja/win/ninja.exe" -G Ninja C:\Users\Deniz\Desktop\CSEFLIX
+-- Configuring done
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    CSEFLIX.cpp
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: CSEFLIX
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
