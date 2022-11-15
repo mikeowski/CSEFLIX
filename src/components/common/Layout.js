@@ -5,9 +5,7 @@ const Layout = ({children}) => {
         <div className='header'>
             {/**Header */}Header
         </div>
-        <div class='sidebar'>
-            {/** Sidebar */}Sidebar
-        </div>
+        
         <div class='children'>
           { children }
         </div>
