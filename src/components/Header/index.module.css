@@ -1,22 +1,25 @@
-.header{
-   background-color: rgb(157, 147, 147);
-    color:rgb(255, 255, 255);
-    height: 96px; 
-    display: flex;
-    padding: 0 30px;
-    justify-content: center;
-    align-items: center;
+.header {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255, 0);
+  height: 96px;
+  display: flex;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
 }
-.logo{
-    width: 234px;
-    height: 89px;
-    border: solid orange 5px;
-
+.logo {
+  width: 234px;
+  height: 89px;
 }
-.navItem{
- margin-left: 40px;
- font-size: 27px;
+.navItem {
+  margin-left: 40px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 44px;
 }
-.searchBox{
-margin-left: auto;
+.selected {
+  color: rgba(255, 255, 255, 0.7);
+}
+.searchBox {
+  margin-left: auto;
 }
