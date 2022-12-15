@@ -1,0 +1,22 @@
+.header{
+   background-color: rgb(157, 147, 147);
+    color:rgb(255, 255, 255);
+    height: 96px; 
+    display: flex;
+    padding: 0 30px;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    width: 234px;
+    height: 89px;
+    border: solid orange 5px;
+
+}
+.navItem{
+ margin-left: 40px;
+ font-size: 27px;
+}
+.searchBox{
+margin-left: auto;
+}
