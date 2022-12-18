@@ -6,13 +6,13 @@
   justify-content: center;
   align-items: center;
   padding-left: 3%;
-  padding-right: 1%;
-  /*
+  padding-right: 5%;
+  width: 100vw;
    position: fixed;
    z-index: 1000;
    top: 0;
-   left: 0;
-  */
+   
+  
 }
 .logo {
   width: 234px;
@@ -46,7 +46,6 @@
   font-size: 20px;
   color: white;
   background-color: black;
-
  
 }
 
