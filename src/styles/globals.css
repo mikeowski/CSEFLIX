@@ -13,6 +13,9 @@ a {
 * {
   box-sizing: border-box;
 }
+input{
+  outline: none;
+}
 
 .testPage {
   height: 100vh;
