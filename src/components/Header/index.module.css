@@ -3,9 +3,16 @@
   background-color: rgb(255, 255, 255, 0);
   height: 96px;
   display: flex;
-  padding: 0 30px;
   justify-content: center;
   align-items: center;
+  padding-left: 3%;
+  padding-right: 1%;
+  /*
+   position: fixed;
+   z-index: 1000;
+   top: 0;
+   left: 0;
+  */
 }
 .logo {
   width: 234px;
@@ -22,4 +29,24 @@
 }
 .searchBox {
   margin-left: auto;
+  border: solid rgba(255, 255, 255, 0.826);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 15px;
+  border-width: 2px;
+  width: 200px;
+  
 }
+.search{
+  padding-left: 8px;
+  width: 95%;
+  height: 15px;
+  border: none;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+
+ 
+}
+

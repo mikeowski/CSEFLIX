@@ -9,7 +9,9 @@ const Header = () => {
       </div>
       <div className={classNames(css.navItem, css.selected)}>Popular</div>
       <div className={css.navItem}>Categories</div>
-      <div className={css.searchBox}>Search</div>
+      <div className={css.searchBox}>
+        <input className={css.search} type="text" placeholder='Search' />
+       </div>
     </header>
   )
 }
