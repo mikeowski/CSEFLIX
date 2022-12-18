@@ -5,18 +5,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 3%;
-  padding-right: 5%;
+  padding-left: 17px;
+  padding-right: 90px;
   width: 100vw;
-   position: fixed;
-   z-index: 1000;
-   top: 0;
-   
-  
+  position: fixed;
+  z-index: 1000;
+  gap: 20px;
+  top: 0;
+  padding-top: 13px;
 }
 .logo {
-  width: 234px;
-  height: 89px;
+  cursor: pointer;
+}
+.leftSide {
+  display: flex;
+  align-items: center;
 }
 .navItem {
   margin-left: 40px;
@@ -27,7 +30,16 @@
 .selected {
   color: rgba(255, 255, 255, 0.7);
 }
+
+.searchButton {
+  margin-left: auto;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 .searchBox {
+  padding: 0px 4px;
   margin-left: auto;
   border: solid rgba(255, 255, 255, 0.826);
   border-left: none;
@@ -35,17 +47,30 @@
   border-top: none;
   border-radius: 15px;
   border-width: 2px;
-  width: 200px;
-  
+  width: 321px;
+  height: 34px;
+  display: flex;
 }
-.search{
-  padding-left: 8px;
+.search {
   width: 95%;
-  height: 15px;
-  border: none;
+  border-radius: 15px;
+  border: 0px;
   font-size: 20px;
   color: white;
   background-color: black;
- 
 }
 
+/* changed navItem font size relative to screen */
+@media (max-width: 768px) {
+  .navItem {
+    font-size: 20px;
+  }
+  .header {
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-wrap: wrap;
+  }
+  .searchBox {
+    margin: 0px;
+  }
+}
