@@ -1,0 +1,76 @@
+.header {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255, 0);
+  height: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 17px;
+  padding-right: 90px;
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  gap: 20px;
+  top: 0;
+  padding-top: 13px;
+}
+.logo {
+  cursor: pointer;
+}
+.leftSide {
+  display: flex;
+  align-items: center;
+}
+.navItem {
+  margin-left: 40px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 44px;
+}
+.selected {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.searchButton {
+  margin-left: auto;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.searchBox {
+  padding: 0px 4px;
+  margin-left: auto;
+  border: solid rgba(255, 255, 255, 0.826);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 15px;
+  border-width: 2px;
+  width: 321px;
+  height: 34px;
+  display: flex;
+}
+.search {
+  width: 95%;
+  border-radius: 15px;
+  border: 0px;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+}
+
+/* changed navItem font size relative to screen */
+@media (max-width: 768px) {
+  .navItem {
+    font-size: 20px;
+  }
+  .header {
+    padding-right: 10px;
+    padding-left: 10px;
+    flex-wrap: wrap;
+  }
+  .searchBox {
+    margin: 0px;
+  }
+}
