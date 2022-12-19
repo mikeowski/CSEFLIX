@@ -7,7 +7,7 @@ const test = () => {
       <MovieCard
         name="Mad Max: Fury Road"
         release_date="2015-05-13"
-        voteAvarage={7.567}
+        
         genres={[
           {
             id: 28,
