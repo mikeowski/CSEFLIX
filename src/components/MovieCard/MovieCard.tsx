@@ -8,10 +8,10 @@ interface PropType {
 const MovieCard = ({ name, release_date, genres }: PropType) => {
   let counter = 0;
   let today = new Date();
-  let releaseDate = Date.parse(release_date);
+  let _releaseDate = Date.parse(release_date);
   let upcoming = ""
   function isReleased() {
-    if (today.getTime() >= releaseDate) {
+    if (today.getTime() >= _releaseDate) {
       upcoming = "";
     }
     else {
