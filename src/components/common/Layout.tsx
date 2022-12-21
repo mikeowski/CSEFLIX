@@ -5,11 +5,13 @@ import classNames from 'classnames'
 import { title } from 'process'
 interface PropType {
   children: React.ReactNode,
-  title?: string
+  title?: string,
+  backgroundImg? : string
 }
-const Layout = ({children,title}:PropType) => {
+const Layout = ({children,title,backgroundImg}:PropType) => {
   return (
     <div className={css.container}>
+        <img src={`https://image.tmdb.org/t/p/original${backgroundImg}`} className={css.backgroundImg}/>
         <Header/>
         {
             title && 
