@@ -5,8 +5,14 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 const Header = () => {
-  const { pathname } = useRouter()
+  const { pathname, push } = useRouter()
+
   const [search, setSearch] = useState('')
+  function searchFunc() {
+    if (search) {
+      push(`/search/${search}`)
+    }
+  }
   return (
     <header className={css.header}>
       <div className={css.leftSide}>
@@ -44,10 +50,7 @@ const Header = () => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search"
         />
-        <button
-          className={css.searchButton}
-          onClick={() => console.log('aşlskdal')}
-        >
+        <button className={css.searchButton} onClick={() => searchFunc()}>
           <Image alt="search" src="/search.png" width={15} height={15} />
         </button>
       </div>
