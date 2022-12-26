@@ -28,7 +28,6 @@ const Home: NextPage = () => {
               ))
             : 'loading'}
         </div>
-        <h2>Content Section</h2>
       </div>
     </Layout>
   )

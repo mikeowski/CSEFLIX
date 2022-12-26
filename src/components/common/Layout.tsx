@@ -11,7 +11,8 @@ interface PropType {
 const Layout = ({children,title,backgroundImg}:PropType) => {
   return (
     <div className={css.container}>
-        <img src={`https://image.tmdb.org/t/p/original${backgroundImg}`} className={css.backgroundImg}/>
+      <img className={css.backgroundImg} src={`https://image.tmdb.org/t/p/original${backgroundImg}`}/>
+      <div className={css.gradient}></div>
         <Header/>
         {
             title && 
