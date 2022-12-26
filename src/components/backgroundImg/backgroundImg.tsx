@@ -1,13 +1,13 @@
 import React from 'react'
-import { trpc } from '../../utils/trpc'
 import css from './index.module.css'
-const BackgroundImg = () => {
-    const { data, isLoading, isSuccess } =
-    trpc.movieRouter.getTrendingMovies.useQuery()
-  const backgroundImage = isSuccess ? data?.results[0]?.backdrop_path : ""
+interface PropType {
+    url?: string
+}
+const BackgroundImg = ({url}: PropType) => {
+    
   return (
     <div className={css.container}>
-      <img className={css.backgroundImg} src={`https://image.tmdb.org/t/p/original${backgroundImage}`}/>
+      <img className={css.backgroundImg} src={`https://image.tmdb.org/t/p/original${url}`}/>
       <div className={css.gradient}></div>
     </div>
   )

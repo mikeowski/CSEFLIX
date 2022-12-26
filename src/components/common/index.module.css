@@ -16,6 +16,7 @@
     font-size: 100px;
     font-weight: bolder;
     width: 100%;
+    z-index: 30;
     height: fit-content; 
     align-items: center;
     justify-content: center;
