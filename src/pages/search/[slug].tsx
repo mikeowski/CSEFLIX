@@ -15,16 +15,11 @@ const Popular = () => {
       {isLoading && <div>LOADİNG</div>}
       {isError && <div>ERROR </div>}
       {isSuccess && data && (
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          {data.results.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              name={movie.original_title}
-              genreIds={movie.genre_ids}
-              imageUrl={movie.backdrop_path}
-              release_date={movie.release_date}
-            />
-          ))}
+        <div className="flex flex-wrap gap-10 w-full  items-center">
+          {data.map((movie) => {
+            if (movie.backdrop_path)
+              return <MovieCard key={movie.id} movie={movie} />
+          })}
         </div>
       )}
     </Layout>
