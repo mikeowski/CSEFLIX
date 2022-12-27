@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Layout } from '../../components/common'
 import MovieCard from '../../components/MovieCard/MovieCard'
+import MovieSlider from '../../components/MovieSlider/MovieSlider'
 import { trpc } from '../../utils/trpc'
 
 const Popular = () => {
@@ -29,15 +30,7 @@ const Popular = () => {
           {isError && <div>ERROR </div>}
           {isSuccess && movies && (
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              {movies.results.map((movie) => (
-                <MovieCard
-                  genreIds={movie.genre_ids}
-                  imageUrl={movie.backdrop_path}
-                  key={movie.id}
-                  name={movie.original_title}
-                  release_date={movie.release_date}
-                />
-              ))}
+              <MovieSlider movies={movies.results} />
             </div>
           )}
         </Layout>
