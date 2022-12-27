@@ -42,7 +42,14 @@ export const movieRouter = router({
     }),
   getUpcomingMovies: publicProcedure.query(async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US`
+    )
+    const data = await response.json()
+    return data as UpComing
+  }),
+  getTopRatedMovies: publicProcedure.query(async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&sort_by=popularity.desc&region=U`
     )
     const data = await response.json()
     return data as UpComing
