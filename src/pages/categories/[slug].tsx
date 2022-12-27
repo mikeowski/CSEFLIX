@@ -5,20 +5,21 @@ import MovieSlider from '../../components/MovieSlider/MovieSlider'
 import { trpc } from '../../utils/trpc'
 
 const Popular = () => {
-  const { slug } = useRouter().query
+  const router = useRouter()
+  const { slug } = router.query
   const {
     data: movies,
     isLoading,
     isSuccess,
     isError,
-  } = trpc.movieRouter.getMoviesByCategory.useQuery({ id: Number(slug) })
+  } = trpc.movieRouter.getMoviesByCategory.useQuery({ id: Number(slug!) })
   const {
     data: genre,
     isLoading: genreLoading,
     isSuccess: genreSuccess,
     isError: genreError,
   } = trpc.movieRouter.getGenresByIds.useQuery({
-    genreId: Number(slug),
+    genreId: Number(slug!),
   })
   return (
     <>
@@ -28,11 +29,9 @@ const Popular = () => {
         <Layout title={genre[0]?.name}>
           {isLoading && <div>LOADİNG</div>}
           {isError && <div>ERROR </div>}
-          {isSuccess && movies && (
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <MovieSlider movies={movies.results} />
-            </div>
-          )}
+          {isSuccess &&
+            movies &&
+            movies.results.map((movie) => <div>{movie.original_title}</div>)}
         </Layout>
       )}
     </>
