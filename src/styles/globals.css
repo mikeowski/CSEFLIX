@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   background-color: black;
@@ -39,8 +43,8 @@ input {
 }
 
 .movie-card:hover {
-  width: 300px;
-  height: 180px;
+  transform: scale(1.1);
+  z-index: 9999;
 }
 
 .movie-card:hover > img {
