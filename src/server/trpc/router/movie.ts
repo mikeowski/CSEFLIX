@@ -1,6 +1,13 @@
 import { router, publicProcedure } from '../trpc'
 import { z } from 'zod'
-import { Genre, Genres, Movie, Result, UpComing } from '../../../types'
+import {
+  Genre,
+  Genres,
+  Movie,
+  MovieVideoResponse,
+  Result,
+  UpComing,
+} from '../../../types'
 
 export const movieRouter = router({
   getTrendingMovies: publicProcedure.query(async () => {
@@ -78,5 +85,14 @@ export const movieRouter = router({
       )
       const data = await response.json()
       return data as Result
+    }),
+  getMovieTrailer: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${input.id}/videos?api_key=${process.env.API_KEY}&language=en-US`
+      )
+      const data = await response.json()
+      return data as MovieVideoResponse
     }),
 })
