@@ -59,16 +59,23 @@ export const movieRouter = router({
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&sort_by=popularity.desc&region=U`
     )
     const data = await response.json()
-    return data as UpComing
+    return data as Result
   }),
   getSearchedMovies: publicProcedure
     .input(z.object({ query: z.string() }))
     .query(async ({ input }) => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${input.query}`
-      )
-      const data = await response.json()
-      return data as Result
+      const resArr: Movie[] = []
+      for (let i = 0; i < 4; i++) {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=${
+            process.env.API_KEY
+          }&query=${input.query}&page=${i + 1}`
+        )
+        const data: Result = await response.json()
+        resArr.push(...data.results)
+      }
+
+      return resArr as Movie[]
     }),
   getCategories: publicProcedure.query(async () => {
     const response = await fetch(
