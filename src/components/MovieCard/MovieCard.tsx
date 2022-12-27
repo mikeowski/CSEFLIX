@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Movie } from '../../types'
 import { trpc } from '../../utils/trpc'
-import css from './index.module.css'
+
 interface PropType {
   movie: Movie
 }
