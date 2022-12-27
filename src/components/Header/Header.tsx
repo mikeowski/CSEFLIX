@@ -25,7 +25,9 @@ const Header = () => {
           <a
             className={classNames(
               css.navItem,
-              pathname == '/popular' && css.selected
+              pathname == '/popular' && css.selected,
+              pathname != '/popular' && 'hover:text-slate-400',
+              'text-slate-400/80  transition-all'
             )}
           >
             Popular
@@ -35,7 +37,9 @@ const Header = () => {
           <a
             className={classNames(
               css.navItem,
-              pathname == '/categories' && css.selected
+              pathname == '/categories' && css.selected,
+              pathname != '/categories' && 'hover:text-slate-400',
+              'text-slate-400/80 hover:text-slate-400 transition-all'
             )}
           >
             Categories
