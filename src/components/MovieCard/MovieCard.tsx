@@ -12,6 +12,7 @@ const MovieCard = ({ movie }: PropType) => {
     isLoading,
     isSuccess,
   } = trpc.movieRouter.getGenresByIds.useQuery({ genreIds: movie.genre_ids })
+
   const { original_title: name, release_date, backdrop_path: imageUrl } = movie
   const counter = 0
   const today = new Date()
@@ -29,21 +30,22 @@ const MovieCard = ({ movie }: PropType) => {
     <div className="movie-card">
       <Image
         className="movie-img"
-        src={`https://image.tmdb.org/t/p/original${imageUrl}`}
+        src={`https://image.tmdb.org/t/p/w500${imageUrl}`}
         alt={name}
         layout="fill"
       />
-      <p className="movie-text release-text">{upcoming}</p>
+      <p className="movie-text release-text transition-all">{upcoming}</p>
       <div className="movieCardContainer">
-        <div className="genre-div">
-          {isSuccess &&
-            genres.map((genre) => (
+        <p className="movie-name font-bold">{name}</p>
+        {isSuccess && (
+          <div className="genre-div">
+            {genres.slice(0, 3).map((genre) => (
               <p key={genre.id} className="movie-text genre">
                 {genre.name}
               </p>
             ))}
-        </div>
-        <p className="movie-text movie-name">{name}</p>
+          </div>
+        )}
       </div>
     </div>
   )
