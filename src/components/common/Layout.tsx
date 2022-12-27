@@ -4,25 +4,15 @@ import css from './index.module.css'
 import classNames from 'classnames'
 import { title } from 'process'
 interface PropType {
-  children: React.ReactNode,
-  title?: string,
-  backgroundImg? : string
+  children: React.ReactNode
+  title?: string
 }
-const Layout = ({children,title,backgroundImg}:PropType) => {
+const Layout = ({ children, title }: PropType) => {
   return (
-    <div className={css.container}>
-        <Header/>
-        {
-            title && 
-            <div className={css.title}>
-              {title}
-            </div>
-        }
-        <div className={css.contentSection}>
-          <div className={css.content}>
-            { children }
-          </div>
-        </div>
+    <div className="mt-24">
+      <Header />
+      <div>{children}</div>
+      {title && <h1>{title}</h1>}
     </div>
   )
 }
