@@ -27,7 +27,7 @@ const MovieSlider = ({ movies, label }: { movies: Movie[]; label: string }) => {
           {movies.map((movie) => {
             if (movie.backdrop_path)
               return (
-                <SwiperSlide>
+                <SwiperSlide key={movie.id}>
                   <MovieCard movie={movie} />
                 </SwiperSlide>
               )
