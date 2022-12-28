@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { Layout } from '../../components/common'
+import Loading from '../../components/Loading/Loading'
 import MovieCard from '../../components/MovieCard/MovieCard'
 import MovieSlider from '../../components/MovieSlider/MovieSlider'
 import { trpc } from '../../utils/trpc'
@@ -23,20 +24,24 @@ const Popular = () => {
   })
   return (
     <>
-      {genreLoading && <div>LOADING</div>}
-      {genreError && <div>ERROR </div>}
-
       <Layout>
-        <div className="mt-44 font-black text-center text-9xl font-header text-white">
-          {genreLoading && <div>LOADING</div>}
-          {genreError && <div>ERROR </div>}
-          {genreSuccess && genre && <div>{genre[0]?.name}</div>}
-        </div>
-        <div className="mt-20 flex flex-wrap gap-8 justify-center">
-          {isLoading && <div>LOADI NG</div>}
-          {isError && <div>ERROR </div>}
-          {isSuccess && movies && movies.map((v) => <MovieCard movie={v} />)}
-        </div>
+        {genreLoading && <Loading />}
+        {genreError && <div>ERROR </div>}
+        {genreSuccess && genre && (
+          <div>
+            <div className="mt-44 font-black text-center text-9xl font-header text-white">
+              {genreError && <div>ERROR </div>}
+              {genreSuccess && genre && <div>{genre[0]?.name}</div>}
+            </div>
+            <div className="mt-20 flex flex-wrap gap-8 justify-center">
+              {isLoading && <Loading />}
+              {isError && <div>ERROR </div>}
+              {isSuccess &&
+                movies &&
+                movies.map((v) => <MovieCard movie={v} />)}
+            </div>
+          </div>
+        )}
       </Layout>
     </>
   )
