@@ -4,7 +4,10 @@ import {
   Genre,
   Genres,
   Movie,
+  MovieDetailedResponse,
   MovieVideoResponse,
+  People,
+  PeopleResponse,
   Result,
   UpComing,
 } from '../../../types'
@@ -12,6 +15,11 @@ export const movieRouter = router({
   getTrendingMovies: publicProcedure.query(async () => {
     const trendMovieUrl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`
     const response = await movieFetcher(trendMovieUrl, 2)
+    return response
+  }),
+  getPopularMovies: publicProcedure.query(async () => {
+    const trendMovieUrl = `https://api.themoviedb.org/3//movie/popular?api_key=${process.env.API_KEY}`
+    const response = await movieFetcher(trendMovieUrl, 3)
     return response
   }),
   getGenresByIds: publicProcedure
@@ -42,7 +50,7 @@ export const movieRouter = router({
         `https://api.themoviedb.org/3/movie/${input.id}?api_key=${process.env.API_KEY}`
       )
       const data = await response.json()
-      return data as Movie
+      return data as MovieDetailedResponse
     }),
   getUpcomingMovies: publicProcedure.query(async () => {
     const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US`
@@ -108,6 +116,24 @@ export const movieRouter = router({
       )
       const data = await reponse.json()
       return data.results as Movie[]
+    }),
+  getPeoples: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${input.id}/credits?api_key=${process.env.API_KEY}`
+      )
+      const data = await response.json()
+      return data as PeopleResponse
+    }),
+  getPeopeDetailsById: publicProcedure
+    .input(z.object({ person_id: z.number() }))
+    .query(async ({ input }) => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/person/${input.person_id}?api_key=${process.env.API_KEY}`
+      )
+      const data = await response.json()
+      return data as People
     }),
 })
 
