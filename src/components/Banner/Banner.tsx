@@ -27,7 +27,7 @@ const Banner = ({ movie }: { movie: Movie }) => {
           }}
         >
           <div className="banner__contents">
-            <h1 className="banner__title text-6xl font-black">
+            <h1 className="banner__title font-header text-7xl font-black mb-2">
               {movie?.original_title}
             </h1>
             <div className="banner__buttons">
