@@ -100,6 +100,15 @@ export const movieRouter = router({
     const response = await movieFetcher(nowPlaying_url, 2)
     return response
   }),
+  getRecommendedMovies: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      const reponse = await fetch(
+        `https://api.themoviedb.org/3/movie/${input.id}/recommendations?api_key=${process.env.API_KEY}&language=en-US`
+      )
+      const data = await reponse.json()
+      return data.results as Movie[]
+    }),
 })
 
 const movieFetcher = async (
