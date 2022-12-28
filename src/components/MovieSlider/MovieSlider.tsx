@@ -14,7 +14,7 @@ const MovieSlider = ({ movies, label }: { movies: Movie[]; label: string }) => {
   const { width } = useViewport()
   return (
     <>
-      <div className="px-10">
+      <div className="px-10 select-none">
         <h1 className="text-2xl font-bold text-white pl-2">{label}</h1>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
