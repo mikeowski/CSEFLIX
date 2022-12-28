@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Banner from '../components/Banner/Banner'
 import Layout from '../components/common/Layout'
+import Loading from '../components/Loading/Loading'
 import MovieCard from '../components/MovieCard/MovieCard'
 import MovieSlider from '../components/MovieSlider/MovieSlider'
 import { trpc } from '../utils/trpc'
@@ -39,9 +40,11 @@ const Home: NextPage = () => {
         </div>
       )}
       <div className="space-y-10">
+        {nowPlayingLoading && <Loading />}
         {nowPlayingSuccess && nowPlayingMovies && (
           <MovieSlider label="IN CINEMAS" movies={nowPlayingMovies} />
         )}
+        {upComingLoading && <Loading />}
         {upcomingSuccess && upcomingMovies && (
           <MovieSlider label="UPCOMING" movies={upcomingMovies} />
         )}
