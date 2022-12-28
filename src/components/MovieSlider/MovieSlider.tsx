@@ -25,11 +25,12 @@ const MovieSlider = ({ movies, label }: { movies: Movie[]; label: string }) => {
           cssMode
         >
           {movies.map((movie) => {
-            return (
-              <SwiperSlide>
-                <MovieCard movie={movie} />
-              </SwiperSlide>
-            )
+            if (movie.backdrop_path)
+              return (
+                <SwiperSlide>
+                  <MovieCard movie={movie} />
+                </SwiperSlide>
+              )
           })}
         </Swiper>
       </div>
