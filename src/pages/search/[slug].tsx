@@ -11,15 +11,18 @@ const Popular = () => {
     })
 
   return (
-    <Layout title={slug as string}>
+    <Layout>
       {isLoading && <div>LOADİNG</div>}
       {isError && <div>ERROR </div>}
       {isSuccess && data && (
-        <div className="flex flex-wrap gap-10 w-full  items-center">
-          {data.map((movie) => {
-            if (movie.backdrop_path)
-              return <MovieCard key={movie.id} movie={movie} />
-          })}
+        <div className="mt-20 flex flex-wrap gap-8 justify-center">
+          {isLoading && <div>LOADİNG</div>}
+          {isError && <div>ERROR </div>}
+          {isSuccess &&
+            data &&
+            data.map(
+              (movie) => movie.backdrop_path && <MovieCard movie={movie} />
+            )}
         </div>
       )}
     </Layout>
