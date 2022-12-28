@@ -27,11 +27,18 @@ const Banner = ({ movie }: { movie: Movie }) => {
           }}
         >
           <div className="banner__contents">
-            <h1 className="banner__title font-header text-7xl font-black mb-2">
+            <h1 className="banner__title font-header text-7xl font-black mb-8">
               {movie?.original_title}
             </h1>
             <div className="banner__buttons">
-              <button className="banner__button">Details</button>
+              <button
+                className="banner__button"
+                onClick={() => {
+                  router.push(`/details/${movie.id}`)
+                }}
+              >
+                Details
+              </button>
               {isSuccess && data && data?.results[0] && (
                 <Link
                   href={
