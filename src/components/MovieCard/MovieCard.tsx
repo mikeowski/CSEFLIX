@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { Movie } from '../../types'
 import { trpc } from '../../utils/trpc'
 
@@ -12,7 +13,7 @@ const MovieCard = ({ movie }: PropType) => {
     isLoading,
     isSuccess,
   } = trpc.movieRouter.getGenresByIds.useQuery({ genreIds: movie.genre_ids })
-
+  const route = useRouter()
   const { original_title: name, release_date, backdrop_path: imageUrl } = movie
   const counter = 0
   const today = new Date()
@@ -27,7 +28,12 @@ const MovieCard = ({ movie }: PropType) => {
   }
   isReleased()
   return (
-    <div className="movie-card">
+    <div
+      className="movie-card cursor-pointer"
+      onClick={() => {
+        route.push(`/details/${movie.id}`)
+      }}
+    >
       <Image
         className="movie-img"
         src={`https://image.tmdb.org/t/p/w500${imageUrl}`}
