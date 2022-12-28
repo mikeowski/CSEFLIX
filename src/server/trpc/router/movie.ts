@@ -8,14 +8,11 @@ import {
   Result,
   UpComing,
 } from '../../../types'
-
 export const movieRouter = router({
   getTrendingMovies: publicProcedure.query(async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`
-    )
-    const data = await response.json()
-    return data as Result
+    const trendMovieUrl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`
+    const response = await movieFetcher(trendMovieUrl, 2)
+    return response
   }),
   getGenresByIds: publicProcedure
     .input(
@@ -48,11 +45,9 @@ export const movieRouter = router({
       return data as Movie
     }),
   getUpcomingMovies: publicProcedure.query(async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US`
-    )
-    const data = await response.json()
-    return data as UpComing
+    const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US`
+    const response = await movieFetcher(upcomingUrl, 2)
+    return response
   }),
   getTopRatedMovies: publicProcedure.query(async () => {
     const response = await fetch(
@@ -87,11 +82,9 @@ export const movieRouter = router({
   getMoviesByCategory: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=${input.id}&sort_by=popularity.desc&language=en-US`
-      )
-      const data = await response.json()
-      return data as Result
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=${input.id}&sort_by=popularity.desc&language=en-US`
+      const response = await movieFetcher(url, 3)
+      return response
     }),
   getMovieTrailer: publicProcedure
     .input(z.object({ id: z.number() }))
@@ -102,4 +95,26 @@ export const movieRouter = router({
       const data = await response.json()
       return data as MovieVideoResponse
     }),
+  getNowPlayingMovies: publicProcedure.query(async () => {
+    const nowPlaying_url = `https://api.themoviedb.org/3/movie/now_playing/?api_key=${process.env.API_KEY}&sort_by=popularity.desc&language=en-US`
+    const response = await movieFetcher(nowPlaying_url, 2)
+    return response
+  }),
 })
+
+const movieFetcher = async (
+  url: string,
+  pageCount?: number
+): Promise<Movie[]> => {
+  const response = await fetch(url)
+  const data = await response.json()
+  const resArr: Movie[] = []
+  if (pageCount && pageCount > 1) {
+    for (let i = 1; i < pageCount; i++) {
+      const response = await fetch(url + `&page=${i + 1}`)
+      const data = await response.json()
+      resArr.push(...data.results)
+    }
+  }
+  return resArr
+}
