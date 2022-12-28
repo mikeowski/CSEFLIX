@@ -21,18 +21,6 @@ const Details = () => {
     isSuccess: categoriesSuccess,
   } = trpc.movieRouter.getCategories.useQuery()
 
-  console.log(
-    movie &&
-      categories &&
-      categories.genres &&
-      movie.genre_ids &&
-      categories.genres
-        .filter((v) => {
-          return movie.genre_ids.includes(v.id)
-        })
-        .map((v) => v.name)
-        .join('/')
-  )
   const base_url = 'https://image.tmdb.org/t/p/original/'
   return (
     <Layout>
@@ -47,7 +35,7 @@ const Details = () => {
             backgroundPosition: 'center center',
           }}
         >
-          <div className="w-full h-96 px-28 border flex gap-2">
+          <div className="w-full h-96 px-28 bg-black/30 flex gap-2">
             <div className="h-full w-64 relative">
               <Image
                 src={`${base_url}${movie?.poster_path}`}
@@ -57,6 +45,17 @@ const Details = () => {
               />
             </div>
             <div className="h-full flex flex-col">
+              <span className="space-x-2">
+                <Image src="/Star.png" width={30} height={32} alt="logo" />
+                <span className="text-4xl font-bold">
+                  {movie.vote_average
+                    .toString()
+                    .split('.')
+                    .map((v, i) => (i == 0 ? v : v.substring(0, 1)))
+                    .join('.')}
+                  /10
+                </span>
+              </span>
               <h1
                 className={classNames(
                   'max-w-3xl font-black font-header',
@@ -77,8 +76,10 @@ const Details = () => {
                       .filter((v) => {
                         return movie.genre_ids.includes(v.id)
                       })
-                      .map((v) => v.name)
-                      .join('/')}
+                      .map((v) => {
+                        return v.name
+                      })
+                      .join(' ')}
                 </span>
               </div>
               <p className="leading-5 max-w-xl pt-10 text-xl font-semibold">
