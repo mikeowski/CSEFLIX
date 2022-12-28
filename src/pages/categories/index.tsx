@@ -15,10 +15,12 @@ const Popular = () => {
       {isLoading && <div>LOADİNG</div>}
       {isError && <div>ERROR </div>}
       {isSuccess && categories && (
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div className="flex flex-wrap w-full mx-auto justify-center mt-32 gap-10">
           {categories.genres.map((categorie) => (
             <Link key={categorie.id} href={`/categories/${categorie.id}`}>
-              {categorie.name}
+              <div className="text-white text-center flex items-center justify-center w-52 h-32 rounded text-xl font-bold cursor-pointer border">
+                {categorie.name}
+              </div>
             </Link>
           ))}
         </div>
