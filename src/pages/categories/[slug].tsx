@@ -25,15 +25,19 @@ const Popular = () => {
     <>
       {genreLoading && <div>LOADİNG</div>}
       {genreError && <div>ERROR </div>}
-      {genreSuccess && genre && (
-        <Layout title={genre[0]?.name}>
+
+      <Layout>
+        <div className="mt-44 font-black text-center text-9xl font-header text-white">
+          {genreLoading && <div>LOADİNG</div>}
+          {genreError && <div>ERROR </div>}
+          {genreSuccess && genre && <div>{genre[0]?.name}</div>}
+        </div>
+        <div className="mt-20 flex flex-wrap gap-8 justify-center">
           {isLoading && <div>LOADİNG</div>}
           {isError && <div>ERROR </div>}
-          {isSuccess &&
-            movies &&
-            movies.results.map((movie) => <div>{movie.original_title}</div>)}
-        </Layout>
-      )}
+          {isSuccess && movies && movies.map((v) => <MovieCard movie={v} />)}
+        </div>
+      </Layout>
     </>
   )
 }
