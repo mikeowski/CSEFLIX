@@ -38,7 +38,9 @@ const Popular = () => {
               {isError && <div>ERROR </div>}
               {isSuccess &&
                 movies &&
-                movies.map((v) => <MovieCard movie={v} />)}
+                movies.map((movie) => (
+                  <MovieCard key={movie.id} movie={movie} />
+                ))}
             </div>
           </div>
         )}
