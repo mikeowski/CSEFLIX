@@ -17,7 +17,7 @@ const Header = () => {
     <header className={css.header}>
       <div className={css.leftSide}>
         <Link href="/" className={css.logo}>
-          <a>
+          <a className="cursor-pointer select-none">
             <Image src="/cseflixLogo.png" width={234} height={90} alt="logo" />
           </a>
         </Link>
