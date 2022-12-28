@@ -19,7 +19,7 @@ const MovieSlider = ({ movies, label }: { movies: Movie[]; label: string }) => {
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
-          className="h-32 "
+          className="h-32"
           slidesPerView={Math.floor((width - 90) / 200)}
           navigation
           cssMode
