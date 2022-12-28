@@ -11,8 +11,7 @@ const Layout = ({ children, title }: PropType) => {
   return (
     <div className="mt-24">
       <Header />
-      <div>{children}</div>
-      {title && <h1>{title}</h1>}
+      <div className="text-white">{children}</div>
     </div>
   )
 }
