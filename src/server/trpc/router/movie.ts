@@ -19,7 +19,7 @@ export const movieRouter = router({
   }),
   getPopularMovies: publicProcedure.query(async () => {
     const trendMovieUrl = `https://api.themoviedb.org/3//movie/popular?api_key=${process.env.API_KEY}`
-    const response = await movieFetcher(trendMovieUrl, 3)
+    const response = await movieFetcher(trendMovieUrl, 4)
     return response
   }),
   getGenresByIds: publicProcedure
