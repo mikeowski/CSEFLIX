@@ -81,7 +81,7 @@ const Details = () => {
               <CastList movie_id={movie.id} />
             </div>
             <div>
-              <RecomendationSlider movie={movie} />
+              <RecommendationsSlider movie={movie} />
             </div>
           </div>
           <div className="absolute bottom-0 w-full h-96 bg-gradient-to-t from-black to-slate-50/0"></div>
@@ -135,18 +135,18 @@ const CastList = ({ movie_id }: { movie_id: number }) => {
     </div>
   )
 }
-const RecomendationSlider = ({ movie }: { movie: MovieDetailedResponse }) => {
+const RecommendationsSlider = ({ movie }: { movie: MovieDetailedResponse }) => {
   const {
-    data: recomendations,
-    isLoading: recomendationsLoading,
-    isError: recomendationsError,
-    isSuccess: recomendationsSuccess,
+    data: recommendations,
+    isLoading: recommendationsLoading,
+    isError: recommendationsError,
+    isSuccess: recommendationsSuccess,
   } = trpc.movieRouter.getRecommendedMovies.useQuery({ id: movie.id })
   return (
     <>
-      {recomendationsLoading && <Loading />}
-      {recomendationsSuccess && recomendations && (
-        <MovieSlider label="Recomendations" movies={recomendations} />
+      {recommendationsLoading && <Loading />}
+      {recommendationsSuccess && recommendations && (
+        <MovieSlider label="Recommendations" movies={recommendations} />
       )}
     </>
   )
