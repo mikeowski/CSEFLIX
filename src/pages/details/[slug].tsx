@@ -96,7 +96,7 @@ const TrailerButton = ({ id }: { id: number }) => {
     trpc.movieRouter.getMovieTrailer.useQuery({ id: id })
   return (
     <>
-      {isSuccess && data && data.results && (
+      {isSuccess && data && data.results && data.results.length > 0 && (
         <Link href={'https://www.youtube.com/watch?v=' + data.results[0]!.key}>
           <button className="mt-auto hover:border-2 transition-all mb-8 w-52 text-center font-black text-xl flex items-center justify-center h-14 border-4 rounded-lg">
             Watch Trailer
