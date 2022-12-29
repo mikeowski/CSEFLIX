@@ -21,7 +21,7 @@ const Popular = () => {
         {isError && <div>ERROR </div>}
         {isSuccess && movies && (
           <div>
-            <div className="mt-44 font-black text-center text-9xl font-header text-white">
+            <div className="select-none mt-44 font-black text-center text-9xl font-header text-white">
               <div>Popular</div>
             </div>
             <div className="mt-20 flex flex-wrap gap-8 justify-center">

@@ -29,7 +29,7 @@ const Popular = () => {
         {genreError && <div>ERROR </div>}
         {genreSuccess && genre && (
           <div>
-            <div className="mt-44 font-black text-center text-9xl font-header text-white">
+            <div className="select-none mt-44 font-black text-center text-9xl font-header text-white">
               {genreError && <div>ERROR </div>}
               {genreSuccess && genre && <div>{genre[0]?.name}</div>}
             </div>
