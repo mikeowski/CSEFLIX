@@ -58,7 +58,8 @@ Sunucuyu çalıştırın
 <img width="1792" alt="Screenshot 2022-12-30 at 22 49 29" src="https://user-images.githubusercontent.com/64980398/210107308-4e9f1eeb-c628-43b6-805f-3e502693ed95.png">
 
 - Detail Page
-![Uploading Screenshot 2022-12-30 at 22.49.47.png…]()
+<img width="1792" alt="Screenshot 2022-12-30 at 22 49 47" src="https://user-images.githubusercontent.com/64980398/210107372-2fa7489d-36cd-49ff-bdf7-14e3f06683d2.png">
+
 
   
 ## Lisans
